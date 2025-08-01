@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Accounts B2B Form</title>
+    <title>Adahi - Accounts B2B Registration</title>
     <style>
         * {
             box-sizing: border-box;
@@ -13,7 +13,9 @@
 
         body {
             font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), 
+                        url('nastuh-abootalebi-yWwob8kwOCk-unsplash.jpg') no-repeat center center fixed;
+            background-size: cover;
             min-height: 100vh;
             padding: 20px;
             display: flex;
@@ -21,32 +23,34 @@
             justify-content: center;
             position: relative;
             overflow-x: hidden;
+            color: #fff;
         }
 
-        body::before {
+        /* body::before {
             content: '';
             position: absolute;
             top: 0;
             left: 0;
             right: 0;
             bottom: 0;
-            background: url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='m0 40l40-40h-40v40zm40 0v-40h-40l40 40z'/%3E%3C/g%3E%3C/svg%3E") repeat;
+            background: url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Cpath d='m0 40l40-40h-40v40zm40 0v-40h-40l40 40z'/%3E%3C/g%3E%3C/svg%3E") repeat;
             pointer-events: none;
-        }
+        } */
 
         #crmWebToEntityForm {
-            background: rgba(255, 255, 255, 0.98);
-            backdrop-filter: blur(20px);
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
             border-radius: 24px;
             box-shadow: 
-                0 32px 64px rgba(0, 0, 0, 0.12),
-                0 0 0 1px rgba(255, 255, 255, 0.1);
+                0 32px 64px rgba(0, 0, 0, 0.25),
+                0 0 0 1px rgba(255, 255, 255, 0.2);
             max-width: 900px;
             width: 100%;
             padding: 50px;
             text-align: left;
             position: relative;
             overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.2);
         }
 
         #crmWebToEntityForm::before {
@@ -56,7 +60,7 @@
             left: 0;
             right: 0;
             height: 6px;
-            background: linear-gradient(90deg, #667eea, #764ba2, #f093fb, #0279FF, #00A3F3);
+            background: linear-gradient(90deg, #22c55e, #16a34a, #15803d, #059669);
             background-size: 300% 100%;
             animation: gradientShift 8s ease-in-out infinite;
         }
@@ -66,17 +70,36 @@
             50% { background-position: 100% 50%; }
         }
 
-        .zcwf_title {
-            color: #1a202c;
-            font-size: 36px;
-            font-weight: 800;
+        .header-section {
             text-align: center;
             margin-bottom: 50px;
             position: relative;
-            letter-spacing: -0.5px;
         }
 
-        .zcwf_title::after {
+        .company-logo {
+            width: 200px;
+            height: auto;
+            margin-bottom: 20px;
+            filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.2));
+        }
+
+        .zcwf_title {
+            color: #15803d;
+            font-size: 32px;
+            font-weight: 800;
+            margin-bottom: 10px;
+            letter-spacing: -0.5px;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .form-subtitle {
+            color: #166534;
+            font-size: 16px;
+            font-weight: 500;
+            margin-bottom: 20px;
+        }
+
+        .header-section::after {
             content: '';
             position: absolute;
             bottom: -15px;
@@ -84,7 +107,7 @@
             transform: translateX(-50%);
             width: 80px;
             height: 4px;
-            background: linear-gradient(90deg, #667eea, #764ba2);
+            background: linear-gradient(90deg, #22c55e, #16a34a);
             border-radius: 2px;
         }
 
@@ -95,12 +118,23 @@
         .section-title {
             font-size: 18px;
             font-weight: 700;
-            color: #2d3748;
+            color: #15803d;
             margin-bottom: 24px;
             padding-bottom: 8px;
-            border-bottom: 2px solid #e2e8f0;
+            border-bottom: 2px solid #dcfce7;
             text-transform: uppercase;
             letter-spacing: 0.5px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .section-title::before {
+            content: '';
+            width: 4px;
+            height: 20px;
+            background: linear-gradient(180deg, #22c55e, #16a34a);
+            border-radius: 2px;
         }
 
         .form-grid {
@@ -123,14 +157,14 @@
         .form-field label {
             font-size: 14px;
             font-weight: 600;
-            color: #4a5568;
+            color: #166534;
             display: flex;
             align-items: center;
             gap: 4px;
         }
 
         .form-field label .required {
-            color: #e53e3e;
+            color: #dc2626;
             font-size: 16px;
         }
 
@@ -138,31 +172,32 @@
         .form-field select {
             width: 100%;
             padding: 16px 20px;
-            border: 2px solid #e2e8f0;
+            border: 2px solid #d1fae5;
             border-radius: 12px;
             font-size: 15px;
             background: #ffffff;
             transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
             outline: none;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
         }
 
         .form-field input[type="text"]:focus,
         .form-field select:focus {
-            border-color: #667eea;
-            box-shadow: 0 0 0 4px rgba(102, 126, 234, 0.1);
+            border-color: #22c55e;
+            box-shadow: 0 0 0 4px rgba(34, 197, 94, 0.1);
             transform: translateY(-2px);
         }
 
         .form-field input[type="text"]:hover,
         .form-field select:hover {
-            border-color: #cbd5e0;
+            border-color: #bbf7d0;
             transform: translateY(-1px);
         }
 
         .form-field select {
             cursor: pointer;
             appearance: none;
-            background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%234a5568' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='m6 8 4 4 4-4'/%3e%3c/svg%3e");
+            background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%2316a34a' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='m6 8 4 4 4-4'/%3e%3c/svg%3e");
             background-position: right 16px center;
             background-repeat: no-repeat;
             background-size: 20px;
@@ -175,7 +210,7 @@
             justify-content: center;
             margin-top: 50px;
             padding-top: 30px;
-            border-top: 1px solid #e2e8f0;
+            border-top: 1px solid #dcfce7;
         }
 
         .btn {
@@ -209,15 +244,15 @@
         }
 
         .btn-primary {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(135deg, #22c55e 0%, #16a34a 100%);
             color: white;
-            box-shadow: 0 10px 25px rgba(102, 126, 234, 0.3);
+            box-shadow: 0 10px 25px rgba(34, 197, 94, 0.3);
         }
 
         .btn-primary:hover {
-            background: linear-gradient(135deg, #5a67d8 0%, #6b46c1 100%);
+            background: linear-gradient(135deg, #16a34a 0%, #15803d 100%);
             transform: translateY(-3px);
-            box-shadow: 0 15px 35px rgba(102, 126, 234, 0.4);
+            box-shadow: 0 15px 35px rgba(34, 197, 94, 0.4);
         }
 
         .btn-primary:active {
@@ -225,14 +260,14 @@
         }
 
         .btn-secondary {
-            background: #f7fafc;
-            color: #4a5568;
-            border: 2px solid #e2e8f0;
+            background: #f7fef9;
+            color: #15803d;
+            border: 2px solid #dcfce7;
         }
 
         .btn-secondary:hover {
-            background: #edf2f7;
-            border-color: #cbd5e0;
+            background: #f0fdf4;
+            border-color: #bbf7d0;
             transform: translateY(-2px);
         }
 
@@ -265,18 +300,18 @@
 
         /* Form validation styles */
         .form-field input:invalid {
-            border-color: #e53e3e;
-            background-color: #fed7d7;
+            border-color: #dc2626;
+            background-color: #fef2f2;
         }
 
         .form-field input:valid:not(:placeholder-shown) {
-            border-color: #38a169;
-            background-color: #f0fff4;
+            border-color: #22c55e;
+            background-color: #f0fdf4;
         }
 
         /* Loading state */
         .btn-primary:disabled {
-            background: #a0aec0;
+            background: #9ca3af;
             cursor: not-allowed;
             transform: none;
             box-shadow: none;
@@ -297,8 +332,12 @@
                 border-radius: 20px;
             }
 
+            .company-logo {
+                width: 150px;
+            }
+
             .zcwf_title {
-                font-size: 28px;
+                font-size: 24px;
                 margin-bottom: 35px;
             }
 
@@ -328,8 +367,12 @@
                 padding: 25px 20px;
             }
 
+            .company-logo {
+                width: 120px;
+            }
+
             .zcwf_title {
-                font-size: 24px;
+                font-size: 20px;
             }
 
             .form-field input[type="text"],
@@ -343,7 +386,7 @@
         .btn:focus-visible,
         .form-field input:focus-visible,
         .form-field select:focus-visible {
-            outline: 2px solid #667eea;
+            outline: 2px solid #22c55e;
             outline-offset: 2px;
         }
 
@@ -359,13 +402,35 @@
             bottom: 0;
             width: 0;
             height: 2px;
-            background: linear-gradient(90deg, #667eea, #764ba2);
+            background: linear-gradient(90deg, #22c55e, #16a34a);
             transition: width 0.3s ease;
             z-index: 1;
         }
 
         .form-field:focus-within::before {
             width: 100%;
+        }
+
+        /* Saudi theme touches */
+        .saudi-accent {
+            color: #15803d;
+            font-weight: 600;
+        }
+
+        /* Header animation */
+        .company-logo {
+            animation: logoFadeIn 1s ease-out;
+        }
+
+        @keyframes logoFadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
     </style>
 </head>
@@ -391,99 +456,110 @@
             </input>
             <!-- Do not remove this code. -->
             
-            <div class='zcwf_title' style='max-width: 600px;color: black; font-family:Arial;'>
-                Accounts B2B
+            <div class="header-section">
+                <img src="https://saudipedia.com/en/saudipediaen/uploads/images/2024/05/29/thumbs/400x400/71838.jpg" alt="Adahi Logo" class="company-logo">
+                <div class='zcwf_title' style='max-width: 600px;color: black; font-family:Arial;'>
+                    B2B Partnership Registration
+                </div>
+                <div class="form-subtitle">
+                    Join Adahi's exclusive business network and unlock premium opportunities
+                </div>
             </div>
 
             <!-- Business Information Section -->
             <div class="form-section">
-                <div class="section-title">Partner Type & Industry
-</div>
+                <div class="section-title">
+                    <span>🏢</span> Business Information
+                </div>
                 <div class="form-grid">
                     <div class="form-field">
-                        <label for='LEADCF29'>Marketer</label>
+                        <label for='LEADCF29'>Organization Type</label>
                         <select class='zcwf_col_fld_slt' role='combobox' aria-expanded='false' aria-haspopup='listbox' id='LEADCF29' onChange='addAriaSelected16748000000567291()' aria-required='false' aria-label='LEADCF29' name='LEADCF29'>
-                            <option value='-None-'>-None-</option>
-                            <option value='private'>private</option>
-                            <option value='govenrment'>govenrment</option>
-                            <option value='semi&#x20;govenrment'>semi govenrment</option>
-                            <option value='non&#x20;profit'>non profit</option>
-                            <option value='organization'>organization</option>
-                            <option value='other'>other</option>
+                            <option value='-None-'>Select Organization Type</option>
+                            <option value='private'>Private Sector</option>
+                            <option value='govenrment'>Government</option>
+                            <option value='semi&#x20;govenrment'>Semi Government</option>
+                            <option value='non&#x20;profit'>Non Profit</option>
+                            <option value='organization'>Organization</option>
+                            <option value='other'>Other</option>
                         </select>
                     </div>
                     <div class="form-field">
-                        <label for='LEADCF28'>Contractor</label>
-                        <input type='text' id='LEADCF28' aria-required='false' aria-label='LEADCF28' name='LEADCF28' aria-valuemax='255' maxlength='255' placeholder="Enter contractor name">
+                        <label for='LEADCF28'>Primary Contractor</label>
+                        <input type='text' id='LEADCF28' aria-required='false' aria-label='LEADCF28' name='LEADCF28' aria-valuemax='255' maxlength='255' placeholder="Enter contractor company name">
                     </div>
                 </div>
                 <div class="form-grid">
                     <div class="form-field">
                         <label for='LEADCF26'>Hajj Mission</label>
-                        <input type='text' id='LEADCF26' aria-required='false' aria-label='LEADCF26' name='LEADCF26' aria-valuemax='255' maxlength='255' placeholder="Enter hajj mission">
+                        <input type='text' id='LEADCF26' aria-required='false' aria-label='LEADCF26' name='LEADCF26' aria-valuemax='255' maxlength='255' placeholder="Enter hajj mission details">
                     </div>
                     <div class="form-field">
                         <label for='LEADCF27'>Hajj Campaign</label>
-                        <input type='text' id='LEADCF27' aria-required='false' aria-label='LEADCF27' name='LEADCF27' aria-valuemax='255' maxlength='255' placeholder="Enter hajj campaign">
+                        <input type='text' id='LEADCF27' aria-required='false' aria-label='LEADCF27' name='LEADCF27' aria-valuemax='255' maxlength='255' placeholder="Enter campaign information">
                     </div>
                 </div>
             </div>
 
             <!-- Management Information Section -->
             <div class="form-section">
-                <div class="section-title"> Manager Information
-</div>
+                <div class="section-title">
+                    <span>👔</span> Management Contact Details
+                </div>
                 <div class="form-grid single-column">
                     <div class="form-field">
                         <label for='LEADCF9'>Manager Full Name</label>
-                        <input type='text' id='LEADCF9' aria-required='false' aria-label='LEADCF9' name='LEADCF9' aria-valuemax='255' maxlength='255' placeholder="Enter manager full name">
+                        <input type='text' id='LEADCF9' aria-required='false' aria-label='LEADCF9' name='LEADCF9' aria-valuemax='255' maxlength='255' placeholder="Enter complete manager name">
                     </div>
                 </div>
                 <div class="form-grid">
                     <div class="form-field">
                         <label for='Last_Name'>Last Name <span class="required">*</span></label>
-                        <input type='text' id='Last_Name' aria-required='true' aria-label='Last Name' name='Last Name' aria-valuemax='80' maxlength='80' placeholder="Enter last name">
+                        <input type='text' id='Last_Name' aria-required='true' aria-label='Last Name' name='Last Name' aria-valuemax='80' maxlength='80' placeholder="Manager's last name">
                     </div>
                     <div class="form-field">
                         <label for='LEADCF11'>Manager Email <span class="required">*</span></label>
-                        <input type='text' ftype='email' autocomplete='false' id='LEADCF11' aria-required='true' aria-label='LEADCF11' name='LEADCF11' aria-valuemax='100' crmlabel='' maxlength='100' placeholder="manager@company.com">
+                        <input type='text' ftype='email' autocomplete='false' id='LEADCF11' aria-required='true' aria-label='LEADCF11' name='LEADCF11' aria-valuemax='100' crmlabel='' maxlength='100' placeholder="manager@company.sa">
                     </div>
                 </div>
                 <div class="form-grid single-column">
                     <div class="form-field">
                         <label for='LEADCF13'>Manager Phone <span class="required">*</span></label>
-                        <input type='text' id='LEADCF13' aria-required='true' aria-label='LEADCF13' name='LEADCF13' aria-valuemax='30' maxlength='30' placeholder="+1 (555) 123-4567">
+                        <input type='text' id='LEADCF13' aria-required='true' aria-label='LEADCF13' name='LEADCF13' aria-valuemax='30' maxlength='30' placeholder="+966 50 123 4567">
                     </div>
                 </div>
             </div>
 
-            <!-- FM Contact Information Section -->
+            <!-- Facilities Management Section -->
             <div class="form-section">
-                <div class="section-title">Finance Manager information</div>
+                <div class="section-title">
+                    <span>🏗️</span> Facilities Management Contact
+                </div>
                 <div class="form-grid">
                     <div class="form-field">
                         <label for='LEADCF15'>FM Email <span class="required">*</span></label>
-                        <input type='text' ftype='email' autocomplete='false' id='LEADCF15' aria-required='true' aria-label='LEADCF15' name='LEADCF15' aria-valuemax='100' crmlabel='' maxlength='100' placeholder="fm@company.com">
+                        <input type='text' ftype='email' autocomplete='false' id='LEADCF15' aria-required='true' aria-label='LEADCF15' name='LEADCF15' aria-valuemax='100' crmlabel='' maxlength='100' placeholder="facilities@company.sa">
                     </div>
                     <div class="form-field">
                         <label for='LEADCF16'>FM Phone <span class="required">*</span></label>
-                        <input type='text' id='LEADCF16' aria-required='true' aria-label='LEADCF16' name='LEADCF16' aria-valuemax='30' maxlength='30' placeholder="+1 (555) 123-4567">
+                        <input type='text' id='LEADCF16' aria-required='true' aria-label='LEADCF16' name='LEADCF16' aria-valuemax='30' maxlength='30' placeholder="+966 50 123 4567">
                     </div>
                 </div>
             </div>
 
-            <!-- IT Manager Information Section -->
+            <!-- IT Department Section -->
             <div class="form-section">
-                <div class="section-title">IT Manager information
-</div>
+                <div class="section-title">
+                    <span>💻</span> IT Department Contact
+                </div>
                 <div class="form-grid">
                     <div class="form-field">
                         <label for='LEADCF21'>IT Manager Email <span class="required">*</span></label>
-                        <input type='text' ftype='email' autocomplete='false' id='LEADCF21' aria-required='true' aria-label='LEADCF21' name='LEADCF21' aria-valuemax='100' crmlabel='' maxlength='100' placeholder="it@company.com">
+                        <input type='text' ftype='email' autocomplete='false' id='LEADCF21' aria-required='true' aria-label='LEADCF21' name='LEADCF21' aria-valuemax='100' crmlabel='' maxlength='100' placeholder="it@company.sa">
                     </div>
                     <div class="form-field">
                         <label for='LEADCF22'>IT Manager Phone <span class="required">*</span></label>
-                        <input type='text' id='LEADCF22' aria-required='true' aria-label='LEADCF22' name='LEADCF22' aria-valuemax='30' maxlength='30' placeholder="+1 (555) 123-4567">
+                        <input type='text' id='LEADCF22' aria-required='true' aria-label='LEADCF22' name='LEADCF22' aria-valuemax='30' maxlength='30' placeholder="+966 50 123 4567">
                     </div>
                 </div>
             </div>
@@ -491,8 +567,8 @@
             <input type='text' type='hidden' style='display: none;' name='aG9uZXlwb3Q' value=''/>
             
             <div class="form-actions">
-                <input type='submit' id='formsubmit' role='button' class='btn btn-primary formsubmit zcwf_button' value='Submit Application' aria-label='Submit' title='Submit'>
-                <input type='reset' class='btn btn-secondary zcwf_button' role='button' name='reset' value='Reset Form' aria-label='Reset' title='Reset'>
+                <input type='submit' id='formsubmit' role='button' class='btn btn-primary formsubmit zcwf_button' value='Submit Partnership Request' aria-label='Submit' title='Submit'>
+                <input type='reset' class='btn btn-secondary zcwf_button' role='button' name='reset' value='Clear Form' aria-label='Reset' title='Reset'>
             </div>
 
             <script>
@@ -591,7 +667,7 @@
                 }
             </script>
             <!-- Do not remove this --- Analytics Tracking code starts -->
-            <script id='wf_anal' src='https://crm.zohopublic.sa/crm/WebFormAnalyticsServeServlet?rid=f3ec244152b3c66245ae143949c08342882ee23d5157a14812984d6dc8724d19e63ba130f2793e7cfab8f0a99gid5feab32c303c56dc41585bfeec57326eec7549312dc5afa66623066b856f322e&tw=b0ef0efd1cae4e5d27f502e39991d6b22cdd48dab5f60c2d7dc47d9ffa8f1e44'></script>
+            <script id='wf_anal' src='https://crm.zohopublic.sa/crm/WebFormAnalyticsServeServlet?rid=f3ec244152b3c66245ae143949c08342882ee23d5157a14812984d6dc8724d19e63ba130f6c0b1e2b9b941de45671ea5gid9a930388e7824dae0ff28c7a75cfd15c9d8895215e20d565a53bf0889b9a48b0gid8464a96b70e25019ad67bc2bfa0bc68076ebe21411ab0fcc2793e7cfab8f0a99gid5feab32c303c56dc41585bfeec57326eec7549312dc5afa66623066b856f322e&tw=b0ef0efd1cae4e5d27f502e39991d6b22cdd48dab5f60c2d7dc47d9ffa8f1e44'></script>
             <!-- Do not remove this --- Analytics Tracking code ends. -->
         </form>
     </div>
